@@ -52,7 +52,7 @@ const ArtScreen = ({ history, match }) => {
 
   return (
     <>
-      <Link className="btn btn-dark my-3" to="/">
+      <Link className="btn btn-dark my-1" to="/">
         Back
       </Link>
       {loading ? (
@@ -62,27 +62,30 @@ const ArtScreen = ({ history, match }) => {
       ) : (
         <>
           <Meta title={art.name} />
+          <Col xl={12} lg={12} md={12} sm={12}>
+            <Image
+              className="img"
+              src={art.image}
+              alt={art.name}
+              rounded
+              fluid
+            />
+          </Col>
+
           <Row>
-            <Col md={6}>
-              <Image src={art.image} alt={art.name} fluid />
-            </Col>
-            <Col md={3}>
-              <ListGroup variant="flush">
-                <ListGroup.Item>
-                  <h2>{art.name}</h2>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Rating
-                    value={art.rating}
-                    text={`${art.numReviews} reviews`}
-                  />
-                </ListGroup.Item>
-                <ListGroup.Item>Description : {art.description}</ListGroup.Item>
-              </ListGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={6}>
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                <h2>{art.name}</h2>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Rating
+                  value={art.rating}
+                  text={`${art.reviews.length} reviews`}
+                />
+              </ListGroup.Item>
+              <ListGroup.Item>Description : {art.description}</ListGroup.Item>
+            </ListGroup>
+            <Col md={12}>
               <h2>Reviews</h2>
 
               {art.reviews.length === 0 && <Message>No Review Yet</Message>}
@@ -110,11 +113,11 @@ const ArtScreen = ({ history, match }) => {
                           onChange={(e) => setRating(e.target.value)}
                         >
                           <option value="">Select..</option>
-                          <option value="1">1 - Poor</option>
-                          <option value="2">2 - Fair</option>
-                          <option value="3">3 - Good</option>
-                          <option value="4">4 - Very Good</option>
-                          <option value="5">5 - Excellent</option>
+                          <option value="1">Restrained</option>
+                          <option value="2">Minimalist</option>
+                          <option value="3">Creative</option>
+                          <option value="4">Elegant</option>
+                          <option value="5">Masterpiece</option>
                         </Form.Control>
                       </Form.Group>
                       <Form.Group controlId="comment">

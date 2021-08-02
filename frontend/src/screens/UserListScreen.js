@@ -54,7 +54,7 @@ const UserListScreen = ({ history }) => {
           bordered
           hover
           responsive
-          className="table-sm text-dark"
+          className="table-sm text-light"
           variant="dark"
         >
           <thead>

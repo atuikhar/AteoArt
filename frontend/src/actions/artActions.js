@@ -18,12 +18,9 @@ import {
   ART_CREATE_REVIEW_REQUEST,
   ART_CREATE_REVIEW_SUCCESS,
   ART_CREATE_REVIEW_FAILED,
-  ART_TOP_REQUEST,
-  ART_TOP_SUCCESS,
-  ART_TOP_FAILED,
 } from "../constants/artConstants";
 
-export const listArtss =
+export const listArts =
   (keyword = "", pageNumber = "") =>
   async (dispatch) => {
     try {

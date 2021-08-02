@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { LinkContainer } from "react-router-bootstrap";
 
-import { Button, Table, Row, Col } from "react-bootstrap";
+import { Button, Table, Row, Col, Image } from "react-bootstrap";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -79,9 +79,6 @@ const ArtListScreen = ({ history, match }) => {
   return (
     <>
       <Row className="align-items-center">
-        <Col>
-          <h1>Arts</h1>
-        </Col>
         <Col className="text-right">
           <Button className="my-3" onClick={createArtHandler}>
             <i className="fas fa-plus">Create Art</i>
@@ -99,26 +96,28 @@ const ArtListScreen = ({ history, match }) => {
       ) : (
         <>
           <Table
-            striped
             bordered
             hover
             responsive
             className="table-sm text-dark"
             variant="dark"
           >
-            <thead>
+            <thead className="text-light">
               <tr>
-                <th>ID</th>
+                <th>ART</th>
                 <th>NAME</th>
                 <th>DESCRIPTION</th>
                 <th></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="text-light">
               {arts.map((art) => (
                 <tr key={art._id}>
-                  <td>{art._id}</td>
-                  <td>{art.name}</td>
+                  <td className="h-25 w-25">
+                    <Image src={art.image} fluid />
+                  </td>
+                  <td className="w-25">{art.name}</td>
+                  <td>{art.description}</td>
                   <td>
                     <LinkContainer to={`/admin/art/${art._id}/edit`}>
                       <Button variant="light" className="btn-sm">

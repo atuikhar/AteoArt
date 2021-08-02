@@ -12,9 +12,9 @@ const Meta = ({ title, description, keywords }) => {
 };
 
 Meta.defaultProps = {
-  title: "Welcome to MiniShop",
-  description: "All Kinds of Products",
-  keywords: "Best Products For Cheap Prices",
+  title: "Art by Ateo",
+  description: "Cradle Of Arts",
+  keywords: "Creativity Takes Courage",
 };
 
 export default Meta;

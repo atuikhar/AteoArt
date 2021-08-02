@@ -8,9 +8,9 @@ import Rating from "./Rating";
 
 const Art = ({ art }) => {
   return (
-    <Card className="my-3 p-3 rounded">
+    <Card className="my-4 p-3 rounded">
       <Link to={`/art/${art._id}`}>
-        <Card.Img src={art.image} variant="top" />
+        <Card.Img src={art.image} variant="top" className="card-img" />
       </Link>
 
       <Card.Body>
@@ -21,7 +21,7 @@ const Art = ({ art }) => {
         </Link>
 
         <Card.Text as="div">
-          <Rating value={art.rating} text={`${art.numReviews} reviews`} />
+          <Rating value={art.rating} text={`${art.reviews.length} reviews`} />
         </Card.Text>
       </Card.Body>
     </Card>

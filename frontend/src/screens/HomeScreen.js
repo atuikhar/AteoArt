@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
 import { listArts } from "../actions/artActions";
@@ -36,13 +36,16 @@ const HomeScreen = ({ match }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          <Row>
-            {arts.map((art) => (
-              <Col key={art._id} sm={12} md={6} lg={4} xl={3}>
-                <Art art={art} />
-              </Col>
-            ))}
-          </Row>
+          <Container fluid className="img-card">
+            <Row as="div">
+              {arts.map((art) => (
+                <Col key={art._id} sm={12} md={6} lg={4} xl={3}>
+                  <Art art={art} />
+                </Col>
+              ))}
+            </Row>
+          </Container>
+
           <Paginate
             pages={pages}
             page={page}

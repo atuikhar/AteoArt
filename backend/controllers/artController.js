@@ -51,7 +51,6 @@ const createArt = asyncHandler(async (req, res) => {
     name: "New Art",
     user: req.user._id,
     image: "/images/sample.jpg",
-    numReviews: 0,
     description: "New Description",
   });
 

@@ -45,13 +45,13 @@ const RegisterScreen = ({ location, history }) => {
 
   return (
     <FormContainer>
-      <h1>SignUp</h1>
+      <h1 className="text-center">SignUp</h1>
       {message && <Message variant="danger"> {message}</Message>}
       {error && <Message variant="danger"> {error}</Message>}
       {loading && <Loader />}
 
       <Form onSubmit={submitHandler}>
-        <Form.Group controlId="name">
+        <Form.Group className="mb-2" controlId="name">
           <Form.Label> Name </Form.Label>
           <Form.Control
             type="name"
@@ -60,7 +60,7 @@ const RegisterScreen = ({ location, history }) => {
             onChange={(e) => setName(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId="email">
+        <Form.Group className="mb-2" controlId="email">
           <Form.Label> Email Address </Form.Label>
           <Form.Control
             type="email"
@@ -69,7 +69,7 @@ const RegisterScreen = ({ location, history }) => {
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId="password">
+        <Form.Group className="mb-2" controlId="password">
           <Form.Label> Password </Form.Label>
           <Form.Control
             type="password"
@@ -78,7 +78,7 @@ const RegisterScreen = ({ location, history }) => {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId="confirmPassword">
+        <Form.Group className="mb-2" controlId="confirmPassword">
           <Form.Label> Confirm Password </Form.Label>
           <Form.Control
             type="password"
@@ -87,13 +87,14 @@ const RegisterScreen = ({ location, history }) => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Button type="submit">Register</Button>
+        <Form.Group className="text-center">
+          <Button type="submit">Register</Button>
+        </Form.Group>
       </Form>
       <Row className="py-3">
         <Col>
-          Have an Account ?
           <Link to={redirect ? `/login?redirect=${redirect}` : `/login`}>
-            Login
+            <Button className="btn btn-sm btn-info m-2">LogIn</Button>
           </Link>
         </Col>
       </Row>

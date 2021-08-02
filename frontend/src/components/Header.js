@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Container, Image } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 import { logout } from "../actions/userActions";
@@ -21,20 +21,26 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="dark" expand="lg" variant="dark" collapseOnSelect>
+      <Navbar bg="none" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>MiniShop</Navbar.Brand>
+            <Navbar.Brand>
+              <h4 className="text-dark">
+                Art <i>by</i> Ateo
+              </h4>
+            </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Route render={({ history }) => <SearchBox history={history} />} />
+            <Container className="justify-content-center w-75">
+              <Route
+                render={({ history }) => <SearchBox history={history} />}
+              />
+            </Container>
             <Nav className="ms-auto">
-              <LinkContainer to="/cart">
-                <Nav.Link>
-                  <i className="fas fa-shopping-cart"></i>Cart
-                </Nav.Link>
-              </LinkContainer>
+              {userInfo ? (
+                <Image src={userInfo.dp} fluid className="dp-icon" />
+              ) : null}
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to="/profile">
@@ -47,7 +53,7 @@ const Header = () => {
               ) : (
                 <LinkContainer to="/login">
                   <Nav.Link>
-                    <i className="fas fa-user"></i>SignIn
+                    <i className="fas fa-user fa-2x"></i>
                   </Nav.Link>
                 </LinkContainer>
               )}
@@ -56,11 +62,8 @@ const Header = () => {
                   <LinkContainer to="/admin/userlist">
                     <NavDropdown.Item>Users</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to="/admin/productlist">
-                    <NavDropdown.Item>Products</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to="/admin/orderlist">
-                    <NavDropdown.Item>OrderList</NavDropdown.Item>
+                  <LinkContainer to="/admin/artlist">
+                    <NavDropdown.Item>Arts</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
               )}
